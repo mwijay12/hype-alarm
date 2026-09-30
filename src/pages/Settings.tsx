@@ -1084,7 +1084,7 @@ export const Settings: React.FC = () => {
                     type={showGroqKey ? "text" : "password"}
                     value={settings.groqApiKey || ""}
                     onChange={(e) => updateSetting("groqApiKey", e.target.value)}
-                    placeholder="gsk_..."
+                    placeholder="Enter your Groq API key"
                     className="w-full px-3.5 py-2.5 pr-10 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white font-mono placeholder:font-sans placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-xs"
                   />
                   <button
@@ -1222,7 +1222,7 @@ export const Settings: React.FC = () => {
                       type={showOpenRouterKey ? "text" : "password"}
                       value={settings.openRouterApiKey}
                       onChange={(e) => updateSetting("openRouterApiKey", e.target.value)}
-                      placeholder="sk-or-v1-..."
+                      placeholder="Enter your OpenRouter API key"
                       className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white font-mono placeholder:font-sans placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-xs"
                     />
                     <button
