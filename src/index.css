@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Electric Blue & White Palette (Light Mode) */
+    --background: 216 100% 98%;      /* #F0F5FF */
+    --foreground: 222 47% 11%;        /* #0F172A */
+
+    --card: 0 0% 100%;                /* #FFFFFF */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;           /* #2563EB - Electric Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 89% 48%;         /* #0EA5E9 - Sky Blue */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 214 32% 91%;             /* Light Blue Gray */
+    --muted-foreground: 215 16% 47%;  /* #64748B */
+
+    --accent: 217 91% 97%;            /* Soft Blue Tint */
+    --accent-foreground: 221 83% 53%;
+
+    --destructive: 0 84% 60%;         /* #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 91% 90%;            /* rgba(59, 130, 246, 0.15) equivalent */
+    --input: 217 91% 90%;
+    --ring: 221 83% 53%;
+
+    --radius: 1rem;                   /* 16px default */
+  }
+
+  .dark {
+    /* Deep Obsidian & Electric Blue Palette (Dark Mode) */
+    --background: 224 71% 4%;         /* #060913 */
+    --foreground: 210 40% 98%;        /* #F8FAFC */
+
+    --card: 222 47% 9%;               /* #0B0F19 */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;           /* #3B82F6 - Electric Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 89% 48%;         /* #0EA5E9 - Sky Cyan */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 33% 15%;             /* #151D2F */
+    --muted-foreground: 215 20% 65%;  /* #94A3B8 */
+
+    --accent: 217 40% 18%;            /* Dark Blue Accent */
+    --accent-foreground: 217 91% 60%;
+
+    --destructive: 0 72% 51%;         /* #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 18%;            /* Subtle Slate Border */
+    --input: 217 33% 18%;
+    --ring: 217 91% 60%;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #0F172A;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0F5FF 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .dark body {
+    color: #F8FAFC;
+    background: linear-gradient(180deg, #070B18 0%, #030712 100%);
+    background-attachment: fixed;
+  }
+
+  /* Transparent background for Desktop Widget (Windhawk HUD) */
+  body.widget-mode,
+  body.widget-mode #root {
+    background: transparent !important;
+    background-image: none !important;
+    min-height: 0 !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Custom Utilities for HyperAlarm Pro */
+@layer utilities {
+  /* Glassmorphism Card (Light & Dark) */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+    border-radius: 1rem;
+    transition: all 0.25s ease;
+  }
+
+  .dark .glass-card {
+    background: rgba(11, 16, 30, 0.78);
+    border: 1px solid rgba(59, 130, 246, 0.22);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-card-interactive {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-interactive:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.14);
+  }
+
+  .dark .glass-card-interactive:hover {
+    border-color: rgba(59, 130, 246, 0.45);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.25);
+  }
+
+  /* Blue Glow Effect */
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.28);
+  }
+
+  .glow-blue-hover:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.40);
+  }
+
+  .dark .glow-blue {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
+  }
+
+  /* Digital Clock Display Font */
+  .digital-text {
+    font-family: 'Orbitron', monospace, sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* Gradient Blue Accent */
+  .gradient-blue {
+    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+  }
+
+  .gradient-blue-text {
+    background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .gradient-blue-text {
+    background: linear-gradient(135deg, #60A5FA 0%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.35);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.60);
+}
